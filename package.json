@@ -1,6 +1,6 @@
 {
   "name": "react-materialize-forms",
-  "version": "1.0.0",
+  "version": "1.0.8",
   "description": "A package containing working Materialize components, mainly used for forms",
   "author": "Nikita Nikolov",
   "license": "MIT",

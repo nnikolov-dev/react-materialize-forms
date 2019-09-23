@@ -1,4 +1,4 @@
-import ExampleComponent from './ExampleComponent'
-import AutoComplete from './AutoComplete'
+import AutoComplete from './components/AutoComplete'
+import Select from './components/Select'
 
-export {ExampleComponent, AutoComplete}
+export {AutoComplete, Select}

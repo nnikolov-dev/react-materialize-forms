@@ -15,12 +15,15 @@ npm install --save react-materialize-forms
 ```jsx
 import React, { Component } from 'react'
 
-import MyComponent from 'react-materialize-forms'
+import { AutoComplete } from 'react-materialize-forms'
 
 class Example extends Component {
+
+  
+
   render () {
     return (
-      <MyComponent />
+      <AutoComplete />
     )
   }
 }
@@ -28,4 +31,4 @@ class Example extends Component {
 
 ## License
 
-MIT © [nnikolov-dev](https://github.com/nnikolov-dev)
+MIT © [nnikolov-dev](https://nnikolov-dev.github.io)

@@ -1,8 +1,8 @@
 {
   "name": "react-materialize-forms",
   "version": "1.0.0",
-  "description": "Test",
-  "author": "nnikolov-dev",
+  "description": "A package containing working Materialize components, mainly used for forms",
+  "author": "Nikita Nikolov",
   "license": "MIT",
   "repository": "nnikolov-dev/react-materialize-forms",
   "main": "dist/index.js",
@@ -57,5 +57,8 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {
+    "materialize-css": "^1.0.0-rc.2"
+  }
 }

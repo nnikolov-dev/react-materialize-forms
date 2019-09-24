@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import M from 'materialize-css'
 
-export default class Select extends Component {
+class Select extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -21,14 +21,19 @@ export default class Select extends Component {
     const {uId} = this.state
     return (
       <div className={`input-field col s${s} m${m} l${l} xl${xl}`}>
-        <select id={uId} onChange={(e) => (onChange(e.target.value))}>
-          <option key='disabled' value='' disabled selected>{value || placeholder}</option>
-          {
-            data.map((option) => (
+        {onChange
+          ? (<select id={uId} onChange={(e) => (onChange(e.target.value))}>
+            <option key='disabled' value='' disabled selected>{value || placeholder}</option>
+            {data.map((option) => (
               <option key={option.key} value={option.key}>{option.value}</option>
-            ))
-          }
-        </select>
+            ))}
+          </select>)
+          : (<select id={uId}>
+            <option key='disabled' value='' disabled selected>{value || placeholder}</option>
+            {data.map((option) => (
+              <option key={option.key} value={option.key}>{option.value}</option>
+            ))}
+          </select>)}
       </div>
     )
   }
@@ -42,17 +47,20 @@ Select.propTypes = {
   placeholder: PropTypes.string,
   data: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired
-  })).isRequired,
+  })),
   onChange: PropTypes.func,
   value: PropTypes.string
 }
 
 Select.defaultProps = {
   s: 12,
-  m: 12,
-  l: 12,
-  xl: 12,
+  m: null,
+  l: null,
+  xl: null,
   placeholder: 'Select a value',
+  data: [],
   onChange: null,
   value: null
 }
+
+export default Select

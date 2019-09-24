@@ -1,4 +1,6 @@
-import AutoComplete from './components/AutoComplete'
+import TextInput from './components/TextInput'
 import Select from './components/Select'
+import Chips from './components/Chips'
+import ChipsExperimental from './components/ChipsExperimental'
 
-export {AutoComplete, Select}
+export {TextInput, Select, Chips, ChipsExperimental}

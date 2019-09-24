@@ -10,7 +10,6 @@ class Chips extends Component {
     }
     this.handleChips = this.handleChips.bind(this)
     this.handleSelect = this.handleSelect.bind(this)
-    this.handleFocusOut = this.handleFocusOut.bind(this)
   }
 
   handleChips = (e, chip) => {
@@ -29,13 +28,14 @@ class Chips extends Component {
     }
   }
 
-  handleFocusOut = (e) => {
+  completeInput = () => {
     const {uId} = this.state
     const chipInstance = M.Chips.getInstance(document.getElementById(uId))
+    console.log(document.getElementById(uId).getElementsByClassName('input')[0].value)
     chipInstance.addChip({
-      tag: e.target.value
+      tag: document.getElementById(uId).getElementsByClassName('input')[0].value
     })
-    e.target.value = null
+    document.getElementById(uId).getElementsByClassName('input')[0].value = null
   }
 
   componentDidMount() {
@@ -55,9 +55,6 @@ class Chips extends Component {
       onChipSelect: this.handleSelect,
       onChipDelete: this.handleChips
     })
-    this.setState({chipsCount: M.Chips.getInstance(document.getElementById(uId)).chipsData.length})
-    const inputInstance = document.getElementById(uId).getElementsByClassName('input')[0]
-    inputInstance.addEventListener('blur', this.handleFocusOut)
   }
 
   render() {

@@ -1,7 +1,9 @@
-import React from 'react'
+import React, {createRef} from 'react'
 
 import {TextInput, Select, Chips} from 'react-materialize-forms'
 export default function App(){
+
+  const chipsRef = createRef();
 
   const autoCompleteData = {
     "Apple": null,
@@ -21,22 +23,24 @@ export default function App(){
 
   return (
     <div className="container">
-      <dic class="row">
-
-      </dic>
-      <div className="card-panel indigo white-text">
-        <h6>react-materialize-forms</h6>
-        <a href="https://github.com/nnikolov-dev/react-materialize-forms" alt="GitHub">GitHub</a>
-      </div>
       <div className="row">
-        <div className="col m8">
+        <div className="col m3">
+          <div className="card-panel indigo white-text">
+            <h6>react-materialize-forms</h6>
+            <a href="https://github.com/nnikolov-dev/react-materialize-forms" alt="GitHub">GitHub</a>
+          </div>
+          <ul>
+            <li>
+              TextInput
+            </li>
+          </ul>
+        </div>
+        <div className="col m9">
+          <h3>TextInput</h3>
           <TextInput label="TextInput Component" onChange={inputHandle} />
           <TextInput label="TextInput Component with AutoComplete" data={autoCompleteData} onChange={inputHandle} />
           <Select data={selectData} onChange={inputHandle} />
-          <Chips onChange={selectData} placeholder="Chips Component" secondaryPlaceholder="Add more" data={autoCompleteData} value={chipsData} onChange={inputHandle} onSelect={inputHandle} />
-        </div>
-        <div className="col m4">
-
+          <Chips ref={chipsRef} onChange={selectData} placeholder="Chips Component" secondaryPlaceholder="Add more" data={autoCompleteData} value={chipsData} onChange={inputHandle} onSelect={inputHandle} />
         </div>
       </div>
     </div>

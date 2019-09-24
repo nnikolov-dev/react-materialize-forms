@@ -44,7 +44,7 @@ class TextInput extends React.Component {
     const extra = xl || large
     return (
       <div className={`input-field col s${small} m${medium} l${large} xl${extra}`}>
-        <input type='text' id={uId} className={autocomplete ? `autocomplete` : null} placeholder={placeholder} value={value || ''} onChange={this.handleChange} />
+        <input type='text' id={uId} className={autocomplete ? `autocomplete input-field` : 'input-field'} placeholder={placeholder} value={value || ''} onChange={this.handleChange} />
         {label
           ? <label htmlFor={`#${uId}`}>{label}</label>
           : null}

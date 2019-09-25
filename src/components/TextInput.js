@@ -11,6 +11,13 @@ class TextInput extends React.Component {
       value: props.value
     }
     this.handleChange = this.handleChange.bind(this)
+    this.handleAutoComplete = this.handleAutoComplete.bind(this)
+  }
+
+  handleAutoComplete = (value) => {
+    const {onChange} = this.props
+    this.setState({value})
+    onChange(value)
   }
 
   componentDidMount() {
@@ -20,7 +27,7 @@ class TextInput extends React.Component {
     if (data && onChange) {
       this.M.Autocomplete.init(elem, {
         data,
-        onAutocomplete: onChange
+        onAutocomplete: this.handleAutoComplete
       })
       this.setState({autocomplete: true})
     }

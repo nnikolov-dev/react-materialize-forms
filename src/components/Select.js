@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import M from 'materialize-css'
 
 class Select extends Component {
   constructor(props) {
     super(props)
+    this.M = window.M
     this.state = {
       uId: `select-${Math.random()}`
     }
@@ -13,14 +13,14 @@ class Select extends Component {
   componentDidMount() {
     const {uId} = this.state
     const elem = document.getElementById(uId)
-    M.FormSelect.init(elem, {})
+    this.M.FormSelect.init(elem, {})
   }
 
   render() {
-    const {s, m, l, xl, placeholder, data, onChange, value} = this.props
+    const {placeholder, data, onChange, value} = this.props
     const {uId} = this.state
     return (
-      <div className={`input-field col s${s} m${m} l${l} xl${xl}`}>
+      <div className='input-field'>
         {onChange
           ? (<select id={uId} onChange={(e) => (onChange(e.target.value))}>
             <option key='disabled' value='' disabled selected>{value || placeholder}</option>
@@ -40,10 +40,6 @@ class Select extends Component {
 }
 
 Select.propTypes = {
-  s: PropTypes.number,
-  m: PropTypes.number,
-  l: PropTypes.number,
-  xl: PropTypes.number,
   placeholder: PropTypes.string,
   data: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired
@@ -53,10 +49,6 @@ Select.propTypes = {
 }
 
 Select.defaultProps = {
-  s: 12,
-  m: null,
-  l: null,
-  xl: null,
   placeholder: 'Select a value',
   data: [],
   onChange: null,

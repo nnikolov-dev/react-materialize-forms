@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import M from 'materialize-css'
 
 class TextInput extends React.Component {
   constructor(props) {
     super(props)
+    this.M = window.M
     this.state = {
       uId: `text-input-${Math.random()}`,
       autocomplete: false,
@@ -18,7 +18,7 @@ class TextInput extends React.Component {
     const {uId} = this.state
     const elem = document.getElementById(uId)
     if (data && onChange) {
-      M.Autocomplete.init(elem, {
+      this.M.Autocomplete.init(elem, {
         data,
         onAutocomplete: onChange
       })
@@ -36,14 +36,10 @@ class TextInput extends React.Component {
   }
 
   render() {
-    const {s, m, l, xl, placeholder, label} = this.props
+    const {placeholder, label} = this.props
     const {uId, autocomplete, value} = this.state
-    const small = s || 12
-    const medium = m || small
-    const large = l || medium
-    const extra = xl || large
     return (
-      <div className={`input-field col s${small} m${medium} l${large} xl${extra}`}>
+      <div className='input-field'>
         <input type='text' id={uId} className={autocomplete ? `autocomplete input-field` : 'input-field'} placeholder={placeholder} value={value || ''} onChange={this.handleChange} />
         {label
           ? <label htmlFor={`#${uId}`}>{label}</label>
@@ -54,10 +50,6 @@ class TextInput extends React.Component {
 }
 
 TextInput.propTypes = {
-  s: PropTypes.number,
-  m: PropTypes.number,
-  l: PropTypes.number,
-  xl: PropTypes.number,
   placeholder: PropTypes.string,
   data: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired
@@ -68,10 +60,6 @@ TextInput.propTypes = {
 }
 
 TextInput.defaultProps = {
-  s: 12,
-  m: null,
-  l: null,
-  xl: null,
   placeholder: null,
   data: [],
   onChange: null,

@@ -1,21 +1,23 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import M from 'materialize-css'
 
 class Chips extends Component {
   constructor(props) {
     super(props)
+    this.M = window.M
     this.state = {
       uId: `chip-${Math.random()}`
     }
     this.handleChips = this.handleChips.bind(this)
     this.handleSelect = this.handleSelect.bind(this)
+    this.completeInput = this.completeInput.bind(this)
+    this.deletePrevious = this.deletePrevious.bind(this)
   }
 
   handleChips = (e, chip) => {
     const {onChange} = this.props
     const {uId} = this.state
-    const chipInstance = M.Chips.getInstance(document.getElementById(uId))
+    const chipInstance = this.M.Chips.getInstance(document.getElementById(uId))
     if (onChange) {
       onChange(chipInstance.chipsData.map((chip) => (chip.tag)))
     }
@@ -28,21 +30,32 @@ class Chips extends Component {
     }
   }
 
-  completeInput = () => {
+  completeInput = (_) => {
     const {uId} = this.state
-    const chipInstance = M.Chips.getInstance(document.getElementById(uId))
-    console.log(document.getElementById(uId).getElementsByClassName('input')[0].value)
+    const chipInstance = this.M.Chips.getInstance(document.getElementById(uId))
     chipInstance.addChip({
       tag: document.getElementById(uId).getElementsByClassName('input')[0].value
     })
     document.getElementById(uId).getElementsByClassName('input')[0].value = null
   }
 
+  deletePrevious = (e) => {
+    const {uId} = this.state
+    const chipInstance = this.M.Chips.getInstance(document.getElementById(uId))
+    if (chipInstance.chipsData.some(chip => chip.tag === e.target.innerText)) {
+      if (chipInstance.chipsData[chipInstance.chipsData.length - 1].tag === e.target.innerText) {
+        chipInstance.deleteChip(chipInstance.chipsData.length - 2)
+      } else {
+        chipInstance.deleteChip(chipInstance.chipsData.length - 1)
+      }
+    }
+  }
+
   componentDidMount() {
     const {value, data, placeholder, secondaryPlaceholder, limit, minLength} = this.props
     const {uId} = this.state
     const elem = document.getElementById(uId)
-    M.Chips.init(elem, {
+    this.M.Chips.init(elem, {
       data: value,
       placeholder,
       secondaryPlaceholder,
@@ -55,13 +68,16 @@ class Chips extends Component {
       onChipSelect: this.handleSelect,
       onChipDelete: this.handleChips
     })
+    const autoComplete = elem.getElementsByClassName('autocomplete-content')[0]
+    const input = elem.getElementsByClassName('input')[0]
+    input.addEventListener('blur', this.completeInput)
+    autoComplete.addEventListener('click', this.deletePrevious)
   }
 
   render() {
-    const {s, m, l, xl} = this.props
     const {uId} = this.state
     return (
-      <div className={`input-field col s${s} m${m} l${l} xl${xl}`}>
+      <div className='input-field'>
         <div id={uId} className='chips chips-placeholder chips-initial chips-autocomplete' />
       </div>
     )
@@ -69,10 +85,6 @@ class Chips extends Component {
 }
 
 Chips.propTypes = {
-  s: PropTypes.number,
-  m: PropTypes.number,
-  l: PropTypes.number,
-  xl: PropTypes.number,
   placeholder: PropTypes.string,
   secondaryPlaceholder: PropTypes.string,
   data: PropTypes.object,
@@ -86,10 +98,6 @@ Chips.propTypes = {
 }
 
 Chips.defaultProps = {
-  s: 12,
-  m: null,
-  l: null,
-  xl: null,
   placeholder: '',
   secondaryPlaceholder: '',
   data: {},

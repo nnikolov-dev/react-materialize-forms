@@ -1,5 +1,11 @@
-import TextInput from './components/TextInput'
-import Select from './components/Select'
-import Chips from './components/Chips'
-
-export {TextInput, Select, Chips}
+export { default as TextInput } from './components/TextInput'
+export { default as Select } from './components/Select'
+export { default as Chips } from './components/Chips'
+export { default as TextArea } from './components/TextArea'
+export { default as FileInput } from './components/FileInput'
+export { default as Range } from './components/Range'
+export { default as CheckBox } from './components/CheckBox'
+export { default as DatePicker } from './components/DatePicker'
+export { default as TimePicker } from './components/TimePicker'
+export { default as RadioButton } from './components/RadioButton'
+export { default as Switch } from './components/Switch'

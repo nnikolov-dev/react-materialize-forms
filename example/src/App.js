@@ -52,6 +52,7 @@ export default () => {
           <TextInput label="TextInput Component" onChange={inputHandle} />
           <SyntaxHighlighter language="jsx" style={docco}>
             {`import react from 'React'
+import {TextInput} from 'react-materialize-forms'
             
 export default () => {
 
@@ -70,6 +71,7 @@ export default () => {
           <TextInput label="TextInput Component with AutoComplete" data={autoCompleteData} onChange={inputHandle} />
           <SyntaxHighlighter language="jsx" style={docco}>
             {`import react from 'React'
+import {TextInput} from 'react-materialize-forms'
 
 export default () => {
 
@@ -96,6 +98,7 @@ export default () => {
           <Select data={selectData} onChange={inputHandle} />
           <SyntaxHighlighter language="jsx" style={docco}>
             {`import react from 'React'
+import {Select} from 'react-materialize-forms'
 
 export default () => {
 
@@ -116,6 +119,7 @@ export default () => {
           <Chips placeholder="Chips Component" secondaryPlaceholder="Add more" data={autoCompleteData} value={chipsData} onChange={inputHandle} />
           <SyntaxHighlighter language="jsx" style={docco}>
             {`import react from 'React'
+import {Chips} from 'react-materialize-forms'
 
 export default () => {
 
@@ -152,6 +156,7 @@ export default () => {
           <TextArea label="TextArea" onChange={inputHandle} />
           <SyntaxHighlighter language="jsx" style={docco}>
             {`import react from 'React'
+import {TextArea} from 'react-materialize-forms'
 
 export default () => {
 
@@ -171,6 +176,7 @@ export default () => {
           <FileInput placeholder="Select a File" onChange={inputHandle} />
           <SyntaxHighlighter language="jsx" style={docco}>
             {`import react from 'React'
+import {FileInput} from 'react-materialize-forms'
 
 export default () => {
 
@@ -188,6 +194,7 @@ export default () => {
           <FileInput placeholder="Select multiple Files" onChange={inputHandle} multiple />
           <SyntaxHighlighter language="jsx" style={docco}>
             {`import react from 'React'
+import {FileInput} from 'react-materialize-forms'
 
 export default () => {
 
@@ -207,9 +214,10 @@ export default () => {
           <Range value="15" />
           <SyntaxHighlighter language="jsx" style={docco}>
             {`import react from 'React'
+import {Range} from 'react-materialize-forms'
 
 export default () => {
-
+  
   const inputHandle = (input) => console.log(input)
 
   return (
@@ -252,6 +260,7 @@ export default () => {
           />
           <SyntaxHighlighter language="jsx" style={docco}>
             {`import react from 'React'
+import {CheckBox} from 'react-materialize-forms'
 
 export default () => {
 
@@ -296,6 +305,7 @@ export default () => {
           <RadioButton label="Same Group" group="radio-group" onChange={inputHandle} />
           <SyntaxHighlighter language="jsx" style={docco}>
             {`import react from 'React'
+import {RadioButton} from 'react-materialize-forms'
 
 export default () => {
 
@@ -327,6 +337,7 @@ export default () => {
           <RadioButton label="Same Group" group="radio-group" gap onChange={inputHandle} />
           <SyntaxHighlighter language="jsx" style={docco}>
             {`import react from 'React'
+import {RadioButton} from 'react-materialize-forms'
 
 export default () => {
 
@@ -359,6 +370,7 @@ export default () => {
           <Switch onChange={inputHandle} />
           <SyntaxHighlighter language="jsx" style={docco}>
             {`import react from 'React'
+import {Switch} from 'react-materialize-forms'
 
 export default () => {
 

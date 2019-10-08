@@ -15,7 +15,7 @@ yard add react-materialize-forms
 
 ## Documentation
 
-[Full Documentation](https://nnikolov-dev.github.io/react-materialize-forms)
+Check out the [Full Documentation](https://nnikolov-dev.github.io/react-materialize-forms)
 
 ## License
 
